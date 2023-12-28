@@ -1,5 +1,7 @@
 package com.example.a3inarow;
 
+import android.graphics.Canvas;
+
 public class Jewel {
     public int poseX;
     public int poseY;
@@ -10,5 +12,28 @@ public class Jewel {
         this.poseX = poseX;
         this.poseY = poseY;
         this.color = color;
+    }
+
+    public void drawJevel(Canvas canvas, SpriteSheet spriteSheet){
+        switch (color){
+            case 1:
+                canvas.drawBitmap(spriteSheet.red, poseX, poseY, null);
+                break;
+            case 2:
+                canvas.drawBitmap(spriteSheet.purple, poseX, poseY, null);
+                break;
+            case 3:
+                canvas.drawBitmap(spriteSheet.green, poseX, poseY, null);
+                break;
+            case 4:
+                canvas.drawBitmap(spriteSheet.blue, poseX, poseY, null);
+                break;
+            case 5:
+                canvas.drawBitmap(spriteSheet.pink, poseX, poseY, null);
+                break;
+            case 6:
+                canvas.drawBitmap(spriteSheet.yellow, poseX, poseY, null);
+                break;
+        }
     }
 }

@@ -34,17 +34,17 @@ public class SpriteSheet {
             istr = assetManager.open("jeweles.png");
             Jewels = BitmapFactory.decodeStream(istr);
             Jewels = Bitmap.createBitmap(Jewels, 0, 0, Jewels.getWidth(),Jewels.getHeight());
-            red = Bitmap.createBitmap(Jewels, 110,13, 58, 78);
+            red = Bitmap.createBitmap(Jewels, 110,13, 57, 77);
             red = Bitmap.createScaledBitmap(red, cellWidth, cellWidth, false);
-            blue = Bitmap.createBitmap(Jewels, 194,13,58,78);
+            blue = Bitmap.createBitmap(Jewels, 194,13,57,77);
             blue = Bitmap.createScaledBitmap(blue,cellWidth,cellWidth,false);
             yellow = Bitmap.createBitmap(Jewels, 185, 275, 75,75);
             yellow = Bitmap.createScaledBitmap(yellow, cellWidth,cellWidth, false);
-            green = Bitmap.createBitmap(Jewels, 278,13,58,78);
+            green = Bitmap.createBitmap(Jewels, 278,13,57,77);
             green = Bitmap.createScaledBitmap(green,cellWidth,cellWidth,false);
             pink = Bitmap.createBitmap(Jewels, 269, 98,75,75);
             pink = Bitmap.createScaledBitmap(pink, cellWidth,cellWidth,false);
-            purple = Bitmap.createBitmap(Jewels, 110, 182, 58, 78);
+            purple = Bitmap.createBitmap(Jewels, 110, 182, 57, 77);
             purple = Bitmap.createScaledBitmap(purple,cellWidth,cellWidth,false);
         }catch (Exception e){
             System.out.println(e.getMessage());

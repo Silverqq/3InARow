@@ -35,7 +35,7 @@ public class DrawThread extends Thread{
             fDeltaTime +=(currentTime - startTime);
             startTime = currentTime;
             if(uDeltaTime >= uOPTIMAL_TIME){
-                //view.update();
+                view.update();
                 updates ++;
                 uDeltaTime -= uOPTIMAL_TIME;
             }
@@ -55,7 +55,7 @@ public class DrawThread extends Thread{
                 ups = updates;
                 updates= 0;
                 frames = 0;
-                timer += 100;
+                timer += 1000;
             }
         }
     }
