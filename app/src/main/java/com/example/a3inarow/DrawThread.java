@@ -17,11 +17,11 @@ public class DrawThread extends Thread{
     }
 
     public void run(){
-        final int MAX_FPS = 60;
-        final int MAX_UPS = 60;
+        final int MAX_FPS = 30;
+        final int MAX_UPS = 30;
 
         final double fOPTIMAL_TIME = (double) 1000000000 / MAX_FPS;
-        final double uOPTIMAL_TIME = (double) 1000000000 / MAX_FPS;
+        final double uOPTIMAL_TIME = (double) 1000000000 / MAX_UPS;
 
         double uDeltaTime = 0, fDeltaTime =0;
         int frames = 0,updates = 0;
@@ -55,7 +55,7 @@ public class DrawThread extends Thread{
                 ups = updates;
                 updates= 0;
                 frames = 0;
-                timer += 1000;
+                timer += 100;
             }
         }
     }

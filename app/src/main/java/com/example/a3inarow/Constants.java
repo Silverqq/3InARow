@@ -7,4 +7,5 @@ public class Constants {
     public static float drawX;
     public static float drawY;
 
+    public static Integer score;
 }
