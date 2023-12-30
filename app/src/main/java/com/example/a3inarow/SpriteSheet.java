@@ -23,11 +23,11 @@ public class SpriteSheet {
         AssetManager assetManager = context.getAssets();
 
         try{
-            InputStream istr = assetManager.open("bgfoers.png");
+            InputStream istr = assetManager.open("Purple.png");
             topBG = BitmapFactory.decodeStream(istr);
             topBG = Bitmap.createBitmap(topBG, 0, 0, topBG.getWidth(),topBG.getHeight());
             topBG = Bitmap.createScaledBitmap(topBG,screenWidth, screenHeight, false);
-            istr = assetManager.open("wood.png");
+            istr = assetManager.open("Purple.png");
             middleBG = BitmapFactory.decodeStream(istr);
             middleBG = Bitmap.createBitmap(middleBG, 0, 0, middleBG.getWidth(),middleBG.getHeight());
             middleBG = Bitmap.createScaledBitmap(middleBG, screenWidth,cellWidth*9, false);

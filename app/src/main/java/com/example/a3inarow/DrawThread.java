@@ -17,8 +17,8 @@ public class DrawThread extends Thread{
     }
 
     public void run(){
-        final int MAX_FPS = 30;
-        final int MAX_UPS = 30;
+        final int MAX_FPS = 60;
+        final int MAX_UPS = 60;
 
         final double fOPTIMAL_TIME = (double) 1000000000 / MAX_FPS;
         final double uOPTIMAL_TIME = (double) 1000000000 / MAX_UPS;
@@ -50,7 +50,7 @@ public class DrawThread extends Thread{
                 frames++;
                 fDeltaTime -= fOPTIMAL_TIME;
             }
-            if(System.currentTimeMillis() - timer >= 1000){
+            if(System.currentTimeMillis() - timer >= 100){
                 fps = frames;
                 ups = updates;
                 updates= 0;

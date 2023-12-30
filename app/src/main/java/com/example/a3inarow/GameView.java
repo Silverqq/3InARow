@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.material.color.utilities.Score;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -168,7 +170,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                 if (board[i][j].color > 0) {
                     if (board[i + 1][j].color == 0) {
                         board[i][j].poseY += cellWidth / 8;
-                        if (((int) drawY + (i + 1) * cellWidth) - board[i][j].poseY < cellWidth / 8){
+                        if (((int) drawY + (i + 1) * cellWidth) - board[i][j].poseY < cellWidth / 8) {
                             board[i + 1][j].color = board[i][j].color;
                             board[i][j].color = 0;
                             board[i][j].poseY = (int) (drawY) + i * cellWidth;
@@ -217,6 +219,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private boolean allowCrushing(ArrayList<Point> points) {
         boolean allow = true;
         for (int i = 0; i < points.size(); i++) {
@@ -224,9 +227,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                 if (board[points.get(i).x + 1][points.get(i).y].color == 0) allow = false;
             }
         }
-        score += score + 100;
-        //TextView ScoreV = (TextView) findViewById(R.id.Score_view);
-        //ScoreV.setText(String.valueOf(score));
+        score += 100;
+        MainActivity.ScoreView.setText(score.toString());
         return allow;
     }
 
@@ -243,37 +245,58 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         if (swapIndex > 0) {
             switch (direction) {
                 case "right":
-                    board[poseI][poseJ + 1].poseX -= cellWidth / 8;
-                    board[poseI][poseJ].poseX += cellWidth / 8;
-                    break;
+                    try {
+                        board[poseI][poseJ + 1].poseX -= cellWidth / 8;
+                        board[poseI][poseJ].poseX += cellWidth / 8;
+                        break;}
+                    catch (Exception e){
+                        break;
+                    }
                 case "left":
-                    board[poseI][poseJ - 1].poseX += cellWidth / 8;
-                    board[poseI][poseJ].poseX -= cellWidth / 8;
-                    break;
+                    try {
+                        board[poseI][poseJ - 1].poseX += cellWidth / 8;
+                        board[poseI][poseJ].poseX -= cellWidth / 8;
+                        break;
+                    }catch (Exception e){
+                        break;
+                    }
                 case "up":
-                    board[poseI - 1][poseJ].poseY += cellWidth / 8;
-                    board[poseI][poseJ].poseY -= cellWidth / 8;
-                    break;
+                    try {
+                        board[poseI - 1][poseJ].poseY += cellWidth / 8;
+                        board[poseI][poseJ].poseY -= cellWidth / 8;
+                        break;}
+                    catch (Exception e){
+                        break;
+                    }
                 case "down":
-                    board[poseI + 1][poseJ].poseY -= cellWidth / 8;
-                    board[poseI][poseJ].poseY += cellWidth / 8;
-                    break;
+                    try {
+                        board[poseI + 1][poseJ].poseY -= cellWidth / 8;
+                        board[poseI][poseJ].poseY += cellWidth / 8;
+                        break;}
+                    catch (Exception e){
+                        break;
+                    }
             }
             swapIndex--;
         } else {
-            Jewel jewel;
-            jewel = board[poseI][poseJ];
-            board[poseI][poseJ] = board[newPoseI][newPoseJ];
-            board[newPoseI][newPoseJ] = jewel;
+            try{
+                Jewel jewel;
+                jewel = board[poseI][poseJ];
+                board[poseI][poseJ] = board[newPoseI][newPoseJ];
+                board[newPoseI][newPoseJ] = jewel;
 
-            board[poseI][poseJ].poseX = (int) (poseJ * cellWidth + drawX);
-            board[poseI][poseJ].poseY = (int) (poseI * cellWidth + drawY);
-            board[newPoseI][newPoseJ].poseX = (int) (newPoseJ * cellWidth + drawX);
-            board[newPoseI][newPoseJ].poseY = (int) (newPoseI * cellWidth + drawY);
-            swapIndex = 8;
-            if (gameState == GameState.swapping) {
-                gameState = GameState.checkSwapping;
-            } else gameState = GameState.nothing;
+                board[poseI][poseJ].poseX = (int) (poseJ * cellWidth + drawX);
+                board[poseI][poseJ].poseY = (int) (poseI * cellWidth + drawY);
+                board[newPoseI][newPoseJ].poseX = (int) (newPoseJ * cellWidth + drawX);
+                board[newPoseI][newPoseJ].poseY = (int) (newPoseI * cellWidth + drawY);
+                swapIndex = 8;
+                if (gameState == GameState.swapping) {
+                    gameState = GameState.checkSwapping;
+                } else gameState = GameState.nothing;
+            }
+            catch (Exception e){
+                gameState = GameState.nothing;
+            }
         }
     }
 
